@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Shop | Eudora Visuals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="scrolled">
+        <div class="nav-container">
+            <a href="index.html#home" class="logo logo-box">
+                <img src="images/logo.png" alt="Eudora Visuals Logo" class="logo-img logo-shadow">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section class="project-detail section-padding" style="padding-top: 150px;">
+        <div class="container">
+            <div id="product-content">
+                <div class="text-center">
+                    <p>Loading creative asset...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Eudora Visuals Logo" class="footer-logo-img logo-shadow">
+                    <p>Creative Graphic Design & Video Editing</p>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone-alt"></i> 075 816 2206 (Lahiru)</p>
+                    <p><i class="fas fa-envelope"></i> eudoravisuals@gmail.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Eudora Visuals. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const itemId = parseInt(urlParams.get('id'));
+            const productContent = document.getElementById('product-content');
+
+            if (itemId && typeof shopData !== 'undefined') {
+                const item = shopData.find(x => x.id === itemId);
+                
+                if (item) {
+                    document.title = `${item.title} | Shop | Eudora Visuals`;
+                    
+                    const availableTag = item.available 
+                        ? `<span class="available-tag">Available</span>`
+                        : `<span class="out-of-stock-tag">Out of Stock</span>`;
+                        
+                    const purchaseBtn = item.available
+                        ? `<a href="https://wa.me/94758162206?text=Hi%20Lahiru,%20I'm%20interested%20in%20purchasing%20your%20product%20%22${encodeURIComponent(item.title)}%22%20for%20LKR%20${item.priceLKR}.%20Please%20let%20me%20know%20how%20to%20proceed." target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Buy via WhatsApp</a>`
+                        : `<a href="https://wa.me/94758162206?text=Hi%20Lahiru,%20I'm%20inquiring%20about%20when%20the%20out-of-stock%20product%20%22${encodeURIComponent(item.title)}%22%20will%20be%20available%20again." target="_blank" class="btn btn-outline" style="border-color: #ff4757; color: #ff4757;"><i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Inquire Availability</a>`;
+
+
+                    productContent.innerHTML = `
+                        <div class="shop-detail-container">
+                            <div class="shop-detail-left">
+                                <div class="shop-detail-img-wrapper watermark-container" oncontextmenu="return false;">
+                                    <img id="main-product-image" src="${item.image}" alt="${item.title}" class="w-100 rounded-20 shadow-lg" draggable="false" style="transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;">
+                                    <div class="protection-overlay"></div>
+                                    <img src="images/logo.png" alt="Watermark" class="project-watermark">
+                                </div>
+                                ${item.images && item.images.length > 0 ? `
+                                <div class="product-thumbnails" style="display: flex; gap: 10px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px;">
+                                    ${item.images.map((img, idx) => `
+                                        <img src="${img}" alt="${item.title} thumbnail ${idx + 1}" class="thumbnail-img ${idx === 0 ? 'active' : ''}" onclick="changeMainImage(this, '${img}')" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; cursor: pointer; border: 2px solid ${idx === 0 ? 'var(--primary-color)' : 'transparent'}; transition: all 0.3s ease; opacity: ${idx === 0 ? '1' : '0.6'};">
+                                    `).join('')}
+                                </div>
+                                ` : ''}
+                            </div>
+                            <div class="shop-detail-info">
+                                <div class="shop-tags mb-20" style="position: static; margin-bottom: 25px;">
+                                    ${availableTag}
+                                </div>
+                                <h1 style="font-size: 3rem; margin-bottom: 20px; line-height: 1.2;">${item.title}</h1>
+                                <div class="shop-detail-price" style="font-size: 2.5rem; color: var(--primary-color); font-weight: 800; margin-bottom: 30px;">
+                                    LKR ${item.priceLKR}
+                                </div>
+                                <div style="width: 50px; height: 3px; background: var(--primary-color); margin-bottom: 30px;"></div>
+                                <p class="shop-detail-desc" style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px;">
+                                    ${item.description}
+                                </p>
+                                <div class="shop-action-btns" style="display: flex; gap: 20px;">
+                                    ${purchaseBtn}
+                                    <a href="shop.html" class="btn btn-outline">Back to Shop</a>
+                                </div>
+                            </div>
+                        </div>
+                        ${renderProductNav(itemId)}
+                    `;
+                } else {
+                    productContent.innerHTML = `
+                        <div class="text-center">
+                            <h2>Creative Asset Not Found</h2>
+                            <p>Sorry, the product you are looking for does not exist in our shop database.</p>
+                            <a href="shop.html" class="btn btn-primary mt-20">Back to Shop</a>
+                        </div>
+                    `;
+                }
+            }
+
+            function renderProductNav(currentId) {
+                const currentIndex = shopData.findIndex(x => x.id === currentId);
+                const prevItem = shopData[currentIndex - 1];
+                const nextItem = shopData[currentIndex + 1];
+
+                let navHtml = '<div class="project-nav mt-60" style="display: flex; justify-content: space-between; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 30px; margin-top: 60px;">';
+                
+                if (prevItem) {
+                    navHtml += `<a href="shop-detail.html?id=${prevItem.id}" class="nav-btn prev" style="color: #000; text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 600; transition: var(--transition);"><i class="fas fa-arrow-left"></i> Previous Item</a>`;
+                } else {
+                    navHtml += '<div></div>';
+                }
+
+                if (nextItem) {
+                    navHtml += `<a href="shop-detail.html?id=${nextItem.id}" class="nav-btn next" style="color: #000; text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 600; transition: var(--transition);">Next Item <i class="fas fa-arrow-right"></i></a>`;
+                }
+
+                navHtml += '</div>';
+                return navHtml;
+            }
+        });
+
+        function changeMainImage(element, newSrc) {
+            const mainImg = document.getElementById('main-product-image');
+            
+            // Add fade out effect
+            mainImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                mainImg.src = newSrc;
+                // Add fade in effect
+                mainImg.style.opacity = '1';
+            }, 300);
+
+            // Update active thumbnail
+            const thumbnails = document.querySelectorAll('.thumbnail-img');
+            thumbnails.forEach(thumb => {
+                thumb.style.borderColor = 'transparent';
+                thumb.style.opacity = '0.6';
+                thumb.classList.remove('active');
+            });
+            
+            element.style.borderColor = 'var(--primary-color)';
+            element.style.opacity = '1';
+            element.classList.add('active');
+        }
+    </script>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/94758162206" class="whatsapp-float" target="_blank" title="Contact me on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+</html>
