@@ -1578,7 +1578,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../images/hero_bg.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('hero_bg.png');
     background-size: cover;
     background-position: center;
     color: #fff;
