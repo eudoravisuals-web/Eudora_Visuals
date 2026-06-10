@@ -3,91 +3,91 @@ const galleryData = [
         id: 1,
         title: "Brand Logo Design",
         category: "logo",
-        image: "images/gallery_1.png",
+        image: "/images/gallery_1.png",
         description: "Modern branding for a tech startup"
     },
     {
         id: 3,
         title: "Executive Business Card",
         category: "visiting-card",
-        image: "images/visiting_card.png",
+        image: "/images/visiting_card.png",
         description: "Premium visiting card design with clean typography and luxury layout."
     },
     {
         id: 5,
         title: "Clothing Shop Logo Concept",
         category: "logo",
-        image: "images/logo_2.png",
+        image: "/images/logo_2.png",
         description: "Minimalist logo design"
     },
     {
         id: 7,
         title: "Creative Travel Flyer Design",
         category: "flyer",
-        image: "images/flyer_1.png",
+        image: "/images/flyer_1.png",
         description: "Professional Travel Flyer Design for an adventure tour company"
     },
     {
         id: 8,
         title: "Creative Travel Flyer Design",
         category: "flyer",
-        image: "images/flyer_2.png",
+        image: "/images/flyer_2.png",
         description: "Professional Travel Flyer Design for an adventure tour company"
     },
     {
         id: 9,
         title: "Creative Travel Flyer Design",
         category: "flyer",
-        image: "images/flyer_3.png",
+        image: "/images/flyer_3.png",
         description: "Professional Travel Flyer Design for an adventure tour company"
     },
     {
         id: 10,
         title: "Entertainment Channel Logo Design",
         category: "logo",
-        image: "images/logo_3.png",
+        image: "/images/logo_3.png",
         description: "Linewall Pictures is a modern entertainment and creative media brand focused on music, dance, photography, and visual storytelling. The logo design represents creativity, cinematic vision, and artistic energy, combining bold visual elements with a stylish and professional identity. Designed to reflect passion and innovation, the Linewall Pictures logo symbolizes a dynamic entertainment channel that captures unforgettable moments through powerful visuals and creative media production."
     },
     {
         id: 11,
         title: "Luxury Boutique Logo",
         category: "logo",
-        image: "images/logo_4.png",
+        image: "/images/logo_4.png",
         description: "Elegant and minimalist logo for a high-end fashion brand"
     },
     {
         id: 12,
         title: "Tech Startup Icon",
         category: "logo",
-        image: "images/logo_5.png",
+        image: "/images/logo_5.png",
         description: "Modern app icon and logo for a software company"
     },
     {
         id: 13,
         title: "Restaurant Branding Logo",
         category: "logo",
-        image: "images/logo_6.png",
+        image: "/images/logo_6.png",
         description: "Creative logo design for a premium dining experience"
     },
     {
         id: 14,
         title: "Fitness App Logo",
         category: "logo",
-        image: "images/logo_6.png",
+        image: "/images/logo_6.png",
         description: "Energetic and bold branding for a fitness platform"
     },
     {
         id: 15,
         title: "Creative Travel Flyer Design",
         category: "flyer",
-        image: "images/flyer_4.png",
+        image: "/images/flyer_4.png",
         description: "Professional Travel Flyer Design for an adventure tour company"
     },
     {
         id: 16,
         title: "Creative Travel Flyer Design",
         category: "flyer",
-        image: "images/flyer_5.png",
+        image: "/images/flyer_5.png",
         description: "Professional Travel Flyer Design for an adventure tour company"
     },
     {
